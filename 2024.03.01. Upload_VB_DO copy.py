@@ -151,7 +151,7 @@ def upload_vb(username, password, vb):
                 "TRICH_YEU": vb['trich_yeu'],
                 "SO_TRANG": "0",
                 "NGAY_TRINH": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3]+"Z",
-                "HAN_XULY": "", #sua tu null thanh ""
+                "HAN_XULY": "", #sua tu null thanh "", hoac khong truyen tham so HAN_XULY
                 "NOI_BO": "false",
                 "NGON_NGU": "VI",
                 "GHI_CHU": "",
@@ -162,7 +162,7 @@ def upload_vb(username, password, vb):
                 "TINH_TRANG": "",
                 "CP_NHANH": "false",
                 "VB_ID": "0",
-                "KY_HIEU": "null",
+                "KY_HIEU": None, #Sửa null thành None để không hiện ký tự null trên Doffice sau khi trình
                 "MA_NGACH": "HC",
                 "LOG_XULY": "",
                 "DISABLE": "false",
