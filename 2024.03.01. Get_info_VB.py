@@ -24,7 +24,7 @@ def getinfo(doc_path):
      #trả về 4 thông tin: Trích yếu;  Người ký;  Nơi nhận
      #1.Nơi nhận
      trichyeu=""
-     noinhan_ct=['TH']
+     noinhan_ct='TH' #Nơi nhận chủ trì
      noinhan_ph=[] #nhận để phối hợp
      noinhan_db=[] #nhận để biết
      noinhan_tn=[] #nhận trong ngành
@@ -73,7 +73,7 @@ def getinfo(doc_path):
                         noinhan_db.append("BACHPS") 
             else:
                 if "các phòng" in p.text.lower():
-                    for ph in ["TH","KH","KT","DD","PT","CN"]:
+                    for ph in ["TH","KH","TCKT","DD","PT","CN"]:
                         if ph not in noinhan_ph:
                             noinhan_ph.append(ph)
                 elif ("bgđ" in p.text.lower()) or ("ban giám đốc" in p.text.lower()) or ("ban gđ" in p.text.lower()):

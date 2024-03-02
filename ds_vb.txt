@@ -3,13 +3,11 @@
         "path_vb": "QD copy 2.docx",
         "trich_yeu": "Quyết định công nhận kết quả đánh giá, xếp loại hoàn thành nhiệm vụ năm 2023 đối với cán bộ Trung tâm Điều độ HTĐ miền Nam",
         "nguoi_ky": "BACPS",
-        "nn_ct": [
-            "TH"
-        ],
+        "nn_ct": "TH",
         "nn_ph": [
             "TH",
             "KH",
-            "KT",
+            "TCKT",
             "DD",
             "PT",
             "CN"
@@ -21,13 +19,11 @@
         "path_vb": "QD copy.docx",
         "trich_yeu": "Quyết định công nhận kết quả đánh giá, xếp loại hoàn thành nhiệm vụ năm 2023 đối với cán bộ Trung tâm Điều độ HTĐ miền Nam",
         "nguoi_ky": "BACPS",
-        "nn_ct": [
-            "TH"
-        ],
+        "nn_ct": "TH",
         "nn_ph": [
             "TH",
             "KH",
-            "KT",
+            "TCKT",
             "DD",
             "PT",
             "CN"
@@ -39,13 +35,11 @@
         "path_vb": "QD.docx",
         "trich_yeu": "Quyết định công nhận kết quả đánh giá, xếp loại hoàn thành nhiệm vụ năm 2023 đối với cán bộ Trung tâm Điều độ HTĐ miền Nam",
         "nguoi_ky": "BACPS",
-        "nn_ct": [
-            "TH"
-        ],
+        "nn_ct": "TH",
         "nn_ph": [
             "TH",
             "KH",
-            "KT",
+            "TCKT",
             "DD",
             "PT",
             "CN"

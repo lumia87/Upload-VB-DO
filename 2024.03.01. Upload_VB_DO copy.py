@@ -10,17 +10,6 @@ from datetime import datetime, timezone
 from requests import Request, Session
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-
-# (23.02.2024.21h00) Sử dụng Request.prepare() thi duoc. Tham khao tai:
-# https://experienceleaguecommunities.adobe.com/t5/adobe-experience-platform/400-bad-request-when-i-try-to-send-a-post-request-to-the-auth/m-p/593183
-lst_vb=[
-    {'stt': 1,'path_vb':'KH.docx','trich_yeu':'KH công tác quốc phòng, quân sự địa phương (A2)', 'nn_ct':'th', 'nn_ph':['cb', 'bchqs'], 'nn_db':['vt','bachps', 'tanldx'], 'nn_tn':['A0']
-    },
-    {
-    'stt': 2,'path_vb':'QD.docx','trich_yeu':'QĐ công nhận xếp loại hoàn thành nhiệm vụ năm 2024'
-    }
-]
-
 phongban = {
     "DD": 39594,     
     "CN": 39596,    
@@ -48,7 +37,7 @@ def noinhan_dv(ky_hieu):
         for dv in ky_hieu:
             res.append({'ID_DV':donvi[dv.upper()]})
     except:
-        print(f"Khong co don vi ma: {ky_hieu}")
+        print(f"( Noi nhan dv)Khong co don vi ma: {ky_hieu}")
     return res
 
 def noinhan_ct(ky_hieu):
@@ -56,10 +45,19 @@ def noinhan_ct(ky_hieu):
     try:
         res = [{'ID_PB':phongban[ky_hieu.upper()]}]
     except:
-        print(f"Khong co phong ban ma: {ky_hieu}")
+        print(f"( Noi nhan chu tri) Khong co phong ban ma: {ky_hieu}")
     return res
 
 def noinhan_ph(ky_hieu):
+    res=[]
+    try:
+        for pb in ky_hieu:
+            res.append({'ID_PB':phongban[pb.upper()]})
+    except:
+        print(f"(Noi nhan p/hop) Khong co phong ban ma: {ky_hieu}")
+    return res
+
+def noinhan_db(ky_hieu):
     res=[]
     try:
         for pb in ky_hieu:
@@ -237,7 +235,6 @@ def upload_vb(username, password, vb):
                 "ID_VB_HDTV": []
             }  
 
-            print(payload2)
 
             req = Request('POST', url2, headers=headers, json = payload2)
             session = requests.Session()
@@ -247,9 +244,10 @@ def upload_vb(username, password, vb):
 
             print(r2.status_code)
             print(r2.text)
+            print(f"Upload thành công văn bản: {vb['trich_yeu']}")
+
 # Chạy chương trình chính
 with open('ds_vb.txt', 'r', encoding='utf8') as f:
     lst_vb=json.load(f )
-    print(lst_vb)
     for vb in lst_vb:
         upload_vb("evnsrldc\\hanb", "Minminnguyen@175", vb)
