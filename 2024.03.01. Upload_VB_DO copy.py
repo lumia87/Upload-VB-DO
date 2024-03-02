@@ -248,6 +248,8 @@ def upload_vb(username, password, vb):
             print(r2.status_code)
             print(r2.text)
 # Chạy chương trình chính
-
-upload_vb("evnsrldc\\hanb", "Minminnguyen@175", lst_vb[0])
-# print(noinhan_ph(['TH','KH']))
+with open('ds_vb.txt', 'r', encoding='utf8') as f:
+    lst_vb=json.load(f )
+    print(lst_vb)
+    for vb in lst_vb:
+        upload_vb("evnsrldc\\hanb", "Minminnguyen@175", vb)
