@@ -134,4 +134,32 @@ def travel_folder(folder_path):
     with open('ds_vb.json','w', encoding='utf8') as f:
         json.dump(dsvb,f, ensure_ascii=False, indent=4)
 
-travel_folder(".")
+# travel_folder(".")
+        
+def getinfo2(doc_path):     
+#bắt đầu chương trình
+     document = Document(doc_path)
+     ds_vb=[]
+     if len(document.tables)>0:
+        table=document.tables[0] #bảng ở cuối danh sách
+        # tiêu đề
+        r0=[]
+        for i in range(len(table.rows)):
+            vb={}
+            for j in range(len(table.columns)):
+                if i==0: #hàng đầu tiên là tiêu đềs
+                    r0.append(table.rows[i].cells[j].text)
+                else:
+                    txt =table.rows[i].cells[j].text
+                 
+                    if (r0[j]=='trich_yeu') or (r0[j]=='path_vb'):
+                        vb[r0[j]]=txt
+                    else:
+                        vb[r0[j]]=list(txt.split(" "))
+
+            if i!=0:
+                ds_vb.append(vb)
+        with open('ds_vb.json','w', encoding='utf8') as f:
+            json.dump(ds_vb,f, ensure_ascii=False, indent=4)
+info = getinfo2('ds_vb.docx')
+print(info)
