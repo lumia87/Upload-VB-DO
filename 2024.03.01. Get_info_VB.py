@@ -1,6 +1,7 @@
 from docx import Document #pip install python-docx/conda install -c conda-forge python-docx
 import datetime
-import win32com.client #conda install pywin32
+import win32com.client #conda install 
+
 import re
 import json
 import time
@@ -95,7 +96,8 @@ def getinfo(doc_path):
                         noinhan_ph.append("BACHPS")
                     if "Tân" in p.text and "TANLDX" not in noinhan_ph:
                         noinhan_ph.append("TANLDX")
- 
+     
+     ghi=False
      for p in document.paragraphs:
          if ("QUYẾT ĐỊNH" in p.text):
              ghi=True
@@ -129,7 +131,7 @@ def travel_folder(folder_path):
             vb=getinfo(f)    
             dsvb.append({'path_vb':vb[0], 'trich_yeu':vb[1],'nguoi_ky':vb[2],'nn_ct':vb[3],'nn_ph':vb[4],'nn_db':vb[5], 'nn_tn':vb[6]})    
     print(dsvb)
-    with open('ds_vb.txt','w', encoding='utf8') as f:
+    with open('ds_vb.json','w', encoding='utf8') as f:
         json.dump(dsvb,f, ensure_ascii=False, indent=4)
 
 travel_folder(".")

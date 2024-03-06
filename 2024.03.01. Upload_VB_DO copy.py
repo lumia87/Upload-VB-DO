@@ -130,7 +130,7 @@ def upload_vb(username, password, vb):
     if r.status_code==200:
         # print(r.text)
         
-        with open("response.txt", "w") as f:
+        with open("response.txt", "w", encoding='utf-8') as f:
             
             files_info=json.loads(r.content)['Data']['responseData']
             f.write(str(files_info))
@@ -247,7 +247,7 @@ def upload_vb(username, password, vb):
             print(f"Upload thành công văn bản: {vb['trich_yeu']}")
 
 # Chạy chương trình chính
-with open('ds_vb.txt', 'r', encoding='utf8') as f:
+with open('ds_vb.json', 'r', encoding='utf8') as f:
     lst_vb=json.load(f )
     for vb in lst_vb:
         upload_vb("evnsrldc\\hanb", "Minminnguyen@175", vb)
